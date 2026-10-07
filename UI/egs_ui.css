@@ -1,0 +1,494 @@
+/* ==========================================================================
+   EGS UI - MODERN STYLING SYSTEM (DEVELOPMENT & SOURCE FILE)
+   Version: 3.5.0 (2026-2027 Full Edition)
+   Features: Light/Dark Theme, Full 12-Col Grid, Glassmorphism, Glow, Tables, 
+             Badges, Tabs, Toasts & Skeletons.
+   ========================================================================== */
+
+/* ==========================================
+   1. CSS VARIABLES & LIGHT/DARK CONFIGURATION
+   ================================---------- */
+:root {
+  /* Light Palette */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary: #64748b;
+  --secondary-hover: #475569;
+  
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #ca8a04;
+  --info: #0284c7;
+
+  --light: #f8fafc;
+  --dark: #0f172a;
+  
+  --text-color: #334155;
+  --text-muted: #64748b;
+  --bg-color: #ffffff;
+  --bg-surface: #f8fafc;
+  --border-color: #cbd5e1;
+
+  /* Modern 2026-2027 Glass & Glow Tokens */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(16px);
+  --glow-primary: 0 0 20px rgba(37, 99, 235, 0.4);
+  --glow-accent: 0 0 25px rgba(0, 255, 204, 0.5);
+
+  --modal-bg: rgba(15, 23, 42, 0.6);
+  --card-bg: #ffffff;
+
+  /* Spacing & Layout */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2.5rem;
+  
+  --container-max: 1200px;
+  --grid-gap: 1.5rem;
+  --border-radius: 0.5rem;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.15);
+}
+
+/* Dark Mode Overrides */
+body.dark-mode, [data-theme="dark"] {
+  --text-color: #f1f5f9;
+  --text-muted: #94a3b8;
+  --bg-color: #0b0f19;
+  --bg-surface: #111827;
+  --border-color: #1f2937;
+  
+  --glass-bg: rgba(17, 24, 39, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  
+  --modal-bg: rgba(0, 0, 0, 0.8);
+  --card-bg: #111827;
+}
+
+/* ==========================================
+   2. RESET & BASE STYLES
+   ================================---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================
+   3. LAYOUT & FULL 12-COLUMN GRID SYSTEM
+   ================================---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--grid-gap) / -2);
+  margin-right: calc(var(--grid-gap) / -2);
+}
+
+.col {
+  flex: 1 1 0%;
+  padding-left: calc(var(--grid-gap) / 2);
+  padding-right: calc(var(--grid-gap) / 2);
+}
+
+/* Hệ thống Column đầy đủ từ 1 đến 12[cite: 4, 5] */
+.col-12 { flex: 0 0 100%; max-width: 100%; padding: calc(var(--grid-gap) / 2); }
+.col-11 { flex: 0 0 91.666667%; max-width: 91.666667%; padding: calc(var(--grid-gap) / 2); }
+.col-10 { flex: 0 0 83.333333%; max-width: 83.333333%; padding: calc(var(--grid-gap) / 2); }
+.col-9  { flex: 0 0 75%; max-width: 75%; padding: calc(var(--grid-gap) / 2); }
+.col-8  { flex: 0 0 66.666667%; max-width: 66.666667%; padding: calc(var(--grid-gap) / 2); }
+.col-7  { flex: 0 0 58.333333%; max-width: 58.333333%; padding: calc(var(--grid-gap) / 2); }
+.col-6  { flex: 0 0 50%; max-width: 50%; padding: calc(var(--grid-gap) / 2); }
+.col-5  { flex: 0 0 41.666667%; max-width: 41.666667%; padding: calc(var(--grid-gap) / 2); }
+.col-4  { flex: 0 0 33.333333%; max-width: 33.333333%; padding: calc(var(--grid-gap) / 2); }
+.col-3  { flex: 0 0 25%; max-width: 25%; padding: calc(var(--grid-gap) / 2); }
+.col-2  { flex: 0 0 16.666667%; max-width: 16.666667%; padding: calc(var(--grid-gap) / 2); }
+.col-1  { flex: 0 0 8.333333%; max-width: 8.333333%; padding: calc(var(--grid-gap) / 2); }
+
+/* ==========================================
+   4. UI COMPONENTS (Standard, Glass, Glow, Parallax)
+   ================================---------- */
+
+/* --- A. Navigation Bar (nav, nav_glass, nav_glow) --- */
+.nav, .nav_glass, .nav_glow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+.nav_glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+}
+.nav_glow {
+  box-shadow: var(--glow-primary);
+  border-bottom: 1px solid var(--primary);
+}
+.nav-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+}
+.nav-items {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+.nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--primary); }
+
+/* --- B. Buttons (btn, btn_glass, btn_glow, btn_par) --- */
+.btn, .btn_glass, .btn_glow, .btn_par {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s, box-shadow 0.2s;
+}
+.btn { background-color: var(--primary); color: #fff; }
+.btn:hover { background-color: var(--primary-hover); }
+
+.btn_glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
+}
+.btn_glass:hover { background-color: rgba(37, 99, 235, 0.1); border-color: var(--primary); }
+
+.btn_glow { background-color: var(--primary); color: #fff; box-shadow: var(--glow-primary); }
+.btn_glow:hover { box-shadow: var(--glow-accent); transform: translateY(-2px); }
+
+.btn_par { background: linear-gradient(135deg, var(--primary), var(--info)); color: #fff; will-change: transform; }
+.btn_par:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+
+/* --- C. Cards (card, card_glass, card_glow) --- */
+.card, .card_glass, .card_glow {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover, .card_glass:hover, .card_glow:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+.card_glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+.card_glow { border-color: var(--primary); box-shadow: var(--glow-primary); }
+.card-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  background-color: var(--bg-surface);
+}
+.card_glass .card-header { background: transparent; border-bottom: 1px solid var(--glass-border); }
+.card-body { padding: var(--spacing-lg); }
+.card-footer {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+}
+
+/* --- D. Forms (form, form_glass) --- */
+.form-group { margin-bottom: var(--spacing-md); }
+.form-label { display: block; margin-bottom: var(--spacing-xs); font-weight: 500; font-size: 0.875rem; }
+.form-control, .form_glass {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form_glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+.form-control:focus, .form_glass:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: var(--glow-primary);
+}
+
+/* --- E. Alerts (alert, alert_glass, alert_glow) --- */
+.alert, .alert_glass, .alert_glow {
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid transparent;
+  font-weight: 500;
+}
+.alert-success { background-color: rgba(22, 163, 74, 0.1); border-color: var(--success); color: var(--success); }
+.alert-danger  { background-color: rgba(220, 38, 38, 0.1); border-color: var(--danger); color: var(--danger); }
+.alert-warning { background-color: rgba(202, 138, 4, 0.1); border-color: var(--warning); color: var(--warning); }
+.alert_glass { background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); color: var(--text-color); }
+.alert_glow { background: rgba(37, 99, 235, 0.1); border-color: var(--primary); color: var(--primary); box-shadow: var(--glow-primary); }
+
+/* --- F. Modal Dialog (modal, modal_glass, modal_glow) --- */
+.modal-backdrop {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: var(--modal-bg);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.modal-backdrop.show { opacity: 1; pointer-events: auto; }
+.modal, .modal_glass, .modal_glow {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  width: 100%; max-width: 500px;
+  box-shadow: var(--shadow-lg); overflow: hidden;
+  transform: translateY(-20px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal_glass { background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); }
+.modal_glow { border: 1px solid var(--primary); box-shadow: var(--glow-primary), var(--shadow-lg); }
+.modal-backdrop.show .modal, .modal-backdrop.show .modal_glass, .modal-backdrop.show .modal_glow { transform: translateY(0); }
+.modal-header, .modal-footer {
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+.modal-footer { border-top: 1px solid var(--border-color); border-bottom: none; justify-content: flex-end; gap: var(--spacing-sm); }
+.modal-body { padding: var(--spacing-lg); }
+
+
+/* ==========================================
+   5. NEW ADVANCED UI COMPONENTS (2026-2027)
+   ================================---------- */
+
+/* --- A. Badges & Tags (badge, badge_glass, badge_glow) --- */
+.badge, .badge_glass, .badge_glow {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 50rem;
+  background-color: var(--primary);
+  color: #fff;
+}
+.badge_glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
+}
+.badge_glow {
+  background-color: var(--primary);
+  color: #fff;
+  box-shadow: var(--glow-primary);
+}
+.badge-success { background-color: var(--success); }
+.badge-danger { background-color: var(--danger); }
+.badge-warning { background-color: var(--warning); color: #000; }
+
+/* --- B. Tables (table, table_glass, table-striped, table-hover) --- */
+.table-container { width: 100%; overflow-x: auto; margin-bottom: var(--spacing-md); }
+.table, .table_glass {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+.table th, .table td, .table_glass th, .table_glass td {
+  padding: 0.75rem var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+.table th { font-weight: 600; background-color: var(--bg-surface); }
+.table-striped tbody tr:nth-child(odd) { background-color: var(--bg-surface); }
+.table-hover tbody tr:hover { background-color: rgba(37, 99, 235, 0.05); }
+
+.table_glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+}
+.table_glass th, .table_glass td { border-bottom: 1px solid var(--glass-border); }
+.table_glass th { background: rgba(255, 255, 255, 0.1); }
+
+/* --- C. Tabs & Accordions --- */
+.tabs-nav {
+  display: flex;
+  list-style: none;
+  border-bottom: 2px solid var(--border-color);
+  gap: var(--spacing-md);
+}
+.tab-item {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+.tab-item.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+.tab-content-item { display: none; padding: var(--spacing-md) 0; }
+.tab-content-item.active { display: block; }
+
+.accordion-item {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-sm);
+  overflow: hidden;
+  background-color: var(--card-bg);
+}
+.accordion-header {
+  padding: var(--spacing-md);
+  font-weight: 600;
+  cursor: pointer;
+  background-color: var(--bg-surface);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.accordion-body {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  display: none;
+}
+.accordion-item.open .accordion-body { display: block; }
+
+/* --- D. Toasts / Notifications --- */
+.toast-container {
+  position: fixed; bottom: 20px; right: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+  z-index: 9999; pointer-events: none;
+}
+.toast, .toast_glass {
+  pointer-events: auto;
+  min-width: 280px;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; justify-content: space-between;
+  animation: fadeInUp 0.3s ease;
+}
+.toast_glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+
+/* --- E. Skeleton Loaders --- */
+.skeleton {
+  background: linear-gradient(90deg, var(--border-color) 25%, var(--bg-surface) 50%, var(--border-color) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--border-radius);
+}
+.skeleton-text { height: 1rem; width: 100%; margin-bottom: 0.5rem; }
+.skeleton-circle { width: 40px; height: 40px; border-radius: 50%; }
+.skeleton-card { height: 150px; width: 100%; }
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+
+/* ==========================================
+   6. CORE UTILITIES, FILTERS & ANIMATIONS
+   ================================---------- */
+.text-center { text-align: center !important; }
+.d-flex { display: flex !important; }
+.align-items-center { align-items: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.mt-2 { margin-top: var(--spacing-md) !important; }
+.mb-2 { margin-bottom: var(--spacing-md) !important; }
+
+/* Filter Utilities */
+.grayscale { filter: grayscale(100%) !important; }
+.blur-sm { filter: blur(4px) !important; }
+.brightness-75 { filter: brightness(0.75) !important; }
+
+/* Animations & Keyframes */
+.animate-fast { animation-duration: 0.3s !important; }
+.animate-normal { animation-duration: 0.6s !important; }
+.animate-infinite { animation-iteration-count: infinite !important; }
+
+.fade-in { animation: fadeIn 0.5s ease both; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.fade-in-up { animation: fadeInUp 0.4s ease both; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+.pulse { animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+
+/* ==========================================
+   7. RESPONSIVE BREAKPOINTS
+   ================================---------- */
+@media (min-width: 768px) {
+  .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-md-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+  .col-md-3 { flex: 0 0 25%; max-width: 25%; }
+}
+
+@media (min-width: 1024px) {
+  .col-lg-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+  .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+}
