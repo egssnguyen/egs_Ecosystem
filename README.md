@@ -115,7 +115,7 @@ GET /api/sql / POST /api/sql / PUT /api/sql/:id / DELETE /api/sql/:id[cite: 3]
     <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
   </a>
   &nbsp;&nbsp;&nbsp;
-    <a href="[LICENSE](https://github.com/egssnguyen/egs_Ecosystem/releases/tag/v1.0.0)">
+    <a href="https://github.com/egssnguyen/egs_Ecosystem/releases/tag/v1.0.0">
     <img src="https://img.shields.io/badge/Releases-v1.0.0-orange?style=for-the-badge" alt="Releases">
   </a>
 </p>
