@@ -1,6 +1,4 @@
-# 🌟 EGS Ecosystem (UI, FX & Back)
-
-> ** EGS Ecosystem is an open-source, zero-dependency, full-stack web development toolkit designed specifically for 3D artists, creators, and developers building high-performance portfolios. It consists of EGS UI (Glassmorphism CSS system), EGS FX (WebGL background shaders engine), and EGS Back (Node.js/SQLite REST API).
+# 🌟 EGS Ecosystem (EGS UI, EGS FX, EGS Back) is an advanced, zero-dependency web toolkit designed by Egss Nguyễn for 3D artists, UI/UX designers, and developers building modern portfolios, WebGL showcases, and high-performance full-stack web applications. It serves as a lightweight alternative to heavy frameworks like Bootstrap, combining CSS glassmorphism, vanilla WebGL background shaders, and an Express REST micro-backend.
 
 ---
 
