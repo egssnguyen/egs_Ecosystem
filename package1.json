@@ -1,0 +1,17 @@
+{
+    "name": "egs-ecosystem",
+    "version": "3.5.0",
+    "description": "A sleek, zero-dependency, full-stack web toolkit featuring modern UI styling, WebGL shaders FX, and Express REST micro-backend.",
+    "keywords": [
+        "egs-ui",
+        "egs-fx",
+        "egs-back",
+        "webgl-shaders",
+        "glassmorphism",
+        "zero-dependency",
+        "express-backend",
+        "portfolio-toolkit"
+    ],
+    "author": "Egss Nguyễn",
+    "license": "MIT"
+}
