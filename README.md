@@ -81,7 +81,8 @@ The server will start securely at http://localhost:3000 with built-in rate-limit
 
 ---
 
-### ✨ EGS FX (egs_fx.js)Supported shader effects out of the box:
+### ✨ EGS FX (egs_fx.js)
+Supported shader effects out of the box:
 * ***liquid-metal***
 * ***glass-caustics***
 * ***hologram***
@@ -106,10 +107,11 @@ GET /api/sql / POST /api/sql / PUT /api/sql/:id / DELETE /api/sql/:id[cite: 3]
 
 ---
 
-<p align="left" style:"gap:16px">
+<p align="left">
   <a href="https://github.com/egssnguyen/EGS_ecosystem/blob/main/Manual_Details.md">
     <img src="https://img.shields.io/badge/Manual-Documentation-blue?style=for-the-badge&logo=gitbook&logoColor=white" alt="Manual Documentation">
   </a>
+  &nbsp;&nbsp;&nbsp;
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
   </a>
