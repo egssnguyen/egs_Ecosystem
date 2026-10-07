@@ -228,3 +228,11 @@ Here is a full HTML template combining **EGS UI** and **EGS FX**:
 </html>
 
 ```
+
+---
+
+## ❓ Frequently Asked Questions (FAQ)
+* **Q: Is EGS dependent on jQuery or heavy frameworks?**
+  * A: No, EGS is 100% zero-dependency, utilizing pure CSS and vanilla ES6 JavaScript modules.
+* **Q: Can I use Egs FX background shaders without Egs UI?**
+  * A: Yes, all three modules (`EGS UI`, `EGS FX`, and `EGS Back`) are fully modular and can be used independently.
