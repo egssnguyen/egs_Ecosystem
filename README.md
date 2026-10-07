@@ -35,7 +35,7 @@ The ecosystem consists of three core modules:
 ```
 ---
 
-##🚀 Quick Start & Installation
+## 🚀 Quick Start & Installation
 ###1. Frontend Setup (EGS UI & EGS FX)
 Include the stylesheet in your HTML <head> and import the FX module in your JavaScript:
 ```html
@@ -60,7 +60,7 @@ Include the stylesheet in your HTML <head> and import the FX module in your Java
 ```
 ---
 
-###2. Backend Setup (EGS Back)
+### 2. Backend Setup (EGS Back)
 Navigate to your backend directory and install the required dependencies:
 ```cmd
 npm install express cors helmet express-rate-limit sqlite3 xlsx csv-parser
@@ -73,15 +73,15 @@ The server will start securely at http://localhost:3000 with built-in rate-limit
 
 ---
 
-##🎛️ Features & Modules
-###🎨 EGS UI (egs_ui.css)
+## 🎛️ Features & Modules
+### 🎨 EGS UI (egs_ui.css)
 1. Responsive 12-Column Grid: Built for modern fluid layouts.
 2. Glassmorphism & Glow: Pre-built classes like .card_glass, .nav_glass, and .btn_glow.
 3. Theme Switching: Native support for light mode and .dark-mode overrides[cite: 2].
 
 ---
 
-###✨ EGS FX (egs_fx.js)Supported shader effects out of the box:
+### ✨ EGS FX (egs_fx.js)Supported shader effects out of the box:
 * ***liquid-metal***
 * ***glass-caustics***
 * ***hologram***
@@ -89,7 +89,7 @@ The server will start securely at http://localhost:3000 with built-in rate-limit
 
 ---
 
-###🛠️ EGS Back (egs_backmin.js)
+### 🛠️ EGS Back (egs_backmin.js)
 Provides clean REST endpoints for rapid prototyping:
 * CSV
 ```
@@ -105,7 +105,8 @@ GET /api/sql / POST /api/sql / PUT /api/sql/:id / DELETE /api/sql/:id[cite: 3]
 ```
 
 ---
-<p align="left">
+
+<p align="left" style:"gap:16px">
   <a href="https://github.com/egssnguyen/EGS_ecosystem/blob/main/Manual_Details.md">
     <img src="https://img.shields.io/badge/Manual-Documentation-blue?style=for-the-badge&logo=gitbook&logoColor=white" alt="Manual Documentation">
   </a>
