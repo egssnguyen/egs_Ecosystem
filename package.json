@@ -1,17 +1,45 @@
 {
-    "name": "egs-ecosystem",
-    "version": "3.5.0",
-    "description": "A sleek, zero-dependency, full-stack web toolkit featuring modern UI styling, WebGL shaders FX, and Express REST micro-backend.",
-    "keywords": [
-        "egs-ui",
-        "egs-fx",
-        "egs-back",
-        "webgl-shaders",
-        "glassmorphism",
-        "zero-dependency",
-        "express-backend",
-        "portfolio-toolkit"
-    ],
-    "author": "Egss Nguyễn",
-    "license": "MIT"
+  "name": "egs-ecosystem",
+  "version": "3.5.0",
+  "description": "A sleek, zero-dependency, full-stack web toolkit and portfolio boilerplate featuring Glassmorphism UI, Vanilla WebGL Shaders FX, and an Express SQLite micro-backend by Egss Nguyễn.",
+  "main": "js/egs_backmin.js",
+  "scripts": {
+    "start": "node js/egs_backmin.js",
+    "dev": "node --watch js/egs_backmin.js"
+  },
+  "keywords": [
+    "egs-ecosystem",
+    "egs-ui",
+    "egs-fx",
+    "egs-back",
+    "egss-nguyen",
+    "full-stack developer portfolio boilerplate",
+    "zero-dependency web architecture",
+    "glassmorphism css framework",
+    "cyberpunk sci-fi web styling system",
+    "dark mode first web UI components",
+    "modern portfolio design system for 3d artists",
+    "neon glow UI effects stylesheet",
+    "vanilla javascript webgl shaders engine",
+    "zero-dependency webgl background animations",
+    "interactive liquid metal shader canvas",
+    "glass caustics web effects",
+    "custom cursor webgl engine",
+    "lightweight alternative to three.js",
+    "express.js micro-backend boilerplate",
+    "zero-configuration sqlite rest api template",
+    "lightweight csv and excel crud server",
+    "node.js secure api starter kit"
+  ],
+  "author": "Egss Nguyễn",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "helmet": "^7.1.0",
+    "sqlite3": "^5.1.7",
+    "xlsx": "^0.18.5"
+  }
 }
