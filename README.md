@@ -105,6 +105,17 @@ GET /api/sql / POST /api/sql / PUT /api/sql/:id / DELETE /api/sql/:id[cite: 3]
 ```
 
 ---
+📖 User Manual UX UI
+<p align="left">
+  <a href="https://github.com/egssnguyen/EGS_ecosystem/blob/main/Manual_Details.md">
+    <img src="https://img.shields.io/badge/Manual-Documentation-blue?style=for-the-badge&logo=gitbook&logoColor=white" alt="Manual Documentation">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
+  </a>
+</p>
+
+---
 
 📄 License
-Distributed under the MIT License. See [LICENSE](https://url-trang-web.com) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/egssnguyen/EGS_ecosystem?tab=MIT-1-ov-file) for more information.
